@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You've Got a Secret 💌</title>
+
+    <!-- Fonts (optional but nice) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Dancing+Script:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/envelope.css" />
+  </head>
+
+  <body>
+    <main class="page">
+      <section class="scene" aria-label="Envelope scene">
+        <div class="headline">
+          <h1 class="title">A secret delivery for you</h1>
+          <p class="subtitle">Tap the seal to open 💖</p>
+        </div>
+
+        <div class="envelope-wrap">
+          <!-- Envelope -->
+          <div class="envelope" id="envelope" aria-label="Sealed envelope">
+            <div class="envelope-back"></div>
+
+            <!-- flap (animates open) -->
+            <div class="flap" id="flap"></div>
+
+            <!-- letter peek (slides up slightly when opening) -->
+            <div class="letter-peek" id="letterPeek">
+              <div class="paper-top"></div>
+            </div>
+
+            <!-- wax seal button -->
+            <button class="seal" id="seal" aria-label="Open the envelope">
+              <span class="seal-heart">♥</span>
+            </button>
+
+            <!-- subtle shine -->
+            <div class="shine"></div>
+          </div>
+
+          <div class="hint" id="hint">Click the ♥ seal</div>
+        </div>
+
+        <footer class="footer-note">
+          <span class="tiny">Made with love.</span>
+        </footer>
+      </section>
+    </main>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/envelope.js"></script>
+  </body>
+</html>

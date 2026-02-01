@@ -1,0 +1,195 @@
+.chest-scene {
+    padding-top: 10px;
+  }
+  
+  .chest-area {
+    display: grid;
+    gap: 18px;
+    place-items: center;
+    width: min(920px, 100%);
+  }
+  
+  /* Chest container */
+  .chest {
+    position: relative;
+    width: min(360px, 84vw);
+    height: 260px;
+    filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.35));
+    transform: translateZ(0);
+    user-select: none;
+  }
+  
+  /* Body */
+  .chest-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 62%;
+    border-radius: 18px;
+  
+    background: linear-gradient(145deg, #7a3a1b, #4b1f0f);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Lid */
+  .chest-lid {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 48%;
+    border-radius: 18px;
+  
+    transform-origin: bottom center;
+    transform: rotateX(0deg);
+    transition: transform 900ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  
+    background: linear-gradient(145deg, #8a4420, #5a2412);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  
+  /* Lock plate */
+  .chest-lock {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    width: 74px;
+    height: 74px;
+    border-radius: 16px;
+  
+    background: linear-gradient(145deg, #ffd37a, #c98b2a);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+  }
+  
+  /* Glow when correct */
+  .chest-glow {
+    position: absolute;
+    inset: -18px;
+    border-radius: 30px;
+    background: radial-gradient(
+      420px 280px at 50% 60%,
+      rgba(255, 179, 199, 0.25),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 500ms ease;
+    pointer-events: none;
+  }
+  
+  /* Lock panel */
+  .lock-panel {
+    width: min(680px, 92vw);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 18px 16px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.25);
+  }
+  
+  .question {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  
+  .q-label {
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    opacity: 0.85;
+  }
+  
+  .q-text {
+    font-family: "Dancing Script", cursive;
+    font-size: 28px;
+    color: rgba(255, 247, 251, 0.95);
+  }
+  
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .answer {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.22);
+    color: var(--text);
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .answer::placeholder {
+    color: rgba(255, 247, 251, 0.55);
+  }
+  
+  .unlock-btn {
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+  
+    background: linear-gradient(145deg, #ff6b8f, #c80f3b);
+    color: #fff;
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.35);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+  
+  .unlock-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
+  }
+  
+  .unlock-btn:active {
+    transform: translateY(0);
+  }
+  
+  .hint {
+    margin-top: 10px;
+    font-family: "Dancing Script", cursive;
+    font-size: 18px;
+    opacity: 0.9;
+  }
+  
+  /* Wrong answer shake */
+  .shake {
+    animation: shake 360ms ease;
+  }
+  
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-10px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    75% {
+      transform: translateX(-8px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  /* OPEN STATE */
+  .chest.open .chest-lid {
+    transform: rotateX(170deg);
+  }
+  
+  .chest.open .chest-glow {
+    opacity: 1;
+  }
+  
