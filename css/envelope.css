@@ -1,0 +1,165 @@
+.envelope-wrap {
+    display: grid;
+    gap: 12px;
+    place-items: center;
+    margin-top: 8px;
+  }
+  
+  .envelope {
+    position: relative;
+    width: min(420px, 92vw);
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    transform: translateZ(0);
+    filter: drop-shadow(0 18px 40px var(--shadow));
+    user-select: none;
+  }
+  
+  /* The back of the envelope */
+  .envelope-back {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #fff4f7, #ffdbe7);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+  }
+  
+  /* Triangular flap */
+  .flap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1px;
+    height: 60%;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 18px;
+  
+    transform-origin: top center;
+    transform: rotateX(0deg);
+    transition: transform 900ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  
+    /* triangle-ish using clip-path */
+    background: linear-gradient(145deg, #ffe0ea, #ffc7d9);
+    clip-path: polygon(0 0, 100% 0, 50% 78%);
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+  }
+  
+  /* Small “letter” peeking out */
+  .letter-peek {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 10%;
+    height: 62%;
+    border-radius: 14px;
+    background: linear-gradient(160deg, #fffdf8, #fff2f7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(22%);
+    transition: transform 900ms cubic-bezier(0.2, 0.9, 0.2, 1);
+    overflow: hidden;
+  }
+  
+  .paper-top {
+    height: 22px;
+    width: 100%;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255, 77, 125, 0.08),
+      rgba(255, 77, 125, 0.08) 8px,
+      rgba(255, 179, 199, 0.06) 8px,
+      rgba(255, 179, 199, 0.06) 16px
+    );
+    opacity: 0.8;
+  }
+  
+  /* Wax seal button */
+  .seal {
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+    width: 86px;
+    height: 86px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+  
+    background: radial-gradient(circle at 30% 30%, #ff6b8f, #c80f3b);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.22);
+    transition: transform 180ms ease, filter 180ms ease;
+  }
+  
+  .seal:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    filter: brightness(1.05);
+  }
+  
+  .seal:active {
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+  
+  .seal-heart {
+    display: inline-block;
+    font-size: 34px;
+    line-height: 1;
+    color: #ffe6ef;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* little shine overlay */
+  .shine {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(
+      500px 300px at 20% 15%,
+      rgba(255, 255, 255, 0.35),
+      transparent 55%
+    );
+    pointer-events: none;
+    opacity: 0.35;
+  }
+  
+  /* Hint text */
+  .hint {
+    font-family: "Dancing Script", cursive;
+    font-size: 20px;
+    color: var(--muted);
+    opacity: 0.95;
+    transition: opacity 300ms ease;
+  }
+  
+  /* OPEN STATE */
+  .envelope.open .flap {
+    transform: rotateX(180deg);
+  }
+  
+  .envelope.open .letter-peek {
+    transform: translateY(-6%);
+  }
+  
+  /* When opened, hide hint a bit */
+  .envelope.open + .hint {
+    opacity: 0.25;
+  }
+  
+  /* Subtle bounce animation for the seal while idle */
+  .envelope:not(.open) .seal {
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+  }
+  

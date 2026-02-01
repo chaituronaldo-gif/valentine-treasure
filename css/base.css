@@ -1,0 +1,78 @@
+:root {
+    --bg1: #120914;
+    --bg2: #2b0f1f;
+    --text: #fff7fb;
+    --muted: rgba(255, 247, 251, 0.8);
+  
+    --accent: #ff4d7d;
+    --accent2: #ffb3c7;
+  
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    color: var(--text);
+    font-family: "Playfair Display", serif;
+    overflow-x: hidden;
+  
+    background: radial-gradient(
+        1200px 800px at 20% 20%,
+        rgba(255, 77, 125, 0.25),
+        transparent 60%
+      ),
+      radial-gradient(
+        900px 700px at 80% 30%,
+        rgba(255, 179, 199, 0.16),
+        transparent 60%
+      ),
+      linear-gradient(160deg, var(--bg1), var(--bg2));
+  }
+  
+  .page {
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 28px 18px;
+  }
+  
+  .scene {
+    width: min(980px, 100%);
+    display: grid;
+    gap: 18px;
+    place-items: center;
+    text-align: center;
+  }
+  
+  .headline .title {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 46px);
+    letter-spacing: 0.5px;
+  }
+  
+  .headline .subtitle {
+    margin: 8px 0 0 0;
+    font-family: "Dancing Script", cursive;
+    font-size: clamp(18px, 2.2vw, 26px);
+    color: var(--muted);
+  }
+  
+  .footer-note {
+    margin-top: 6px;
+    opacity: 0.85;
+  }
+  
+  .tiny {
+    font-size: 12px;
+    letter-spacing: 0.3px;
+  }
+  
